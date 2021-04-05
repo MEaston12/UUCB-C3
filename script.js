@@ -2,9 +2,9 @@
 function generatePassword(){
   //Prompt for length
   var length = 0;
-  while(length < 8 || length > 128 || typeof length !== Number){
-    length = prompt("How many characters long would you like your password to be? (Enter 8-128)");
-    if(length < 8 || length > 128 || typeof length !== Number) alert("Please try again, make sure to enter a number between 8 and 128.");
+  while(length < 8 || length > 128){
+    length = +prompt("How many characters long would you like your password to be? (Enter 8-128)");
+    if(length < 8 || length > 128 || typeof length !== 'number') {alert("Please try again, make sure to enter a number between 8 and 128.");}
   }
   
   //Prompt for letters
