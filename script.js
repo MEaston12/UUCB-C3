@@ -6,17 +6,16 @@ function generatePassword(){
     passLength = +prompt("How many characters long would you like your password to be? (Enter 8-128)");
     if(passLength < 8 || passLength > 128 || typeof passLength !== 'number') {alert("Please try again, make sure to enter a number between 8 and 128.");}
   }
-  
-  //Prompt for letters
-  var letters = confirm("Press OK if you would like to use letters in your password.");
-  if(letters){
+  while(!(upper||lower||numbers||special)){ //loop through character selection as long as no characters are selected
+    //Prompt for letters
     var upper = confirm("Press OK if you would like to use uppercase letters in your password.");
     var lower = confirm("Press OK if you would like to use lowercase letters in your password.");
+    //Prompt for numeric
+    var numbers = confirm("Press OK if you would like to use numbers in your password.");
+    //Prompt for special characters
+    var special = confirm("Press OK if you would like to use special characters in your password. (!@#$%^&*()_-+)");
+    if(!(upper||lower||numbers||special)){alert("You need to at least use one type of characters!");}
   }
-  //Prompt for numeric
-  var numbers = confirm("Press OK if you would like to use numbers in your password.");
-  //Prompt for special characters
-  var special = confirm("Press OK if you would like to use special characters in your password. (!@#$%^&*()_-+)");
   //Now we've got the prompts out of the way, time to use the variables we made.
   var charDeck = []; //Defining an array to act as a 'deck' of characters to pull from.
   if(upper){
