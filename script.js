@@ -1,10 +1,10 @@
 // Assignment code here
 function generatePassword(){
   //Prompt for length
-  var length = 0;
-  while(length < 8 || length > 128){
-    length = +prompt("How many characters long would you like your password to be? (Enter 8-128)");
-    if(length < 8 || length > 128 || typeof length !== 'number') {alert("Please try again, make sure to enter a number between 8 and 128.");}
+  var passLength = 0;
+  while(passLength < 8 || passLength > 128){
+    passLength = +prompt("How many characters long would you like your password to be? (Enter 8-128)");
+    if(passLength < 8 || passLength > 128 || typeof passLength !== 'number') {alert("Please try again, make sure to enter a number between 8 and 128.");}
   }
   
   //Prompt for letters
@@ -20,17 +20,27 @@ function generatePassword(){
   //Now we've got the prompts out of the way, time to use the variables we made.
   var charDeck = []; //Defining an array to act as a 'deck' of characters to pull from.
   if(upper){
-    for(let char = 65; char < 90; char++){ //Iterate from 65-90 (uppercase char codes)
-      charDeck.push(String.fromCharCode(char));
-    }
+    fillCharCodes(charDeck, 65, 90);
   }
   if(lower){
-    for(let char = 97; char < 123; char++){ //Iterate from 97-123 (lowercase char codes)
-      charDeck.push(String.fromCharCode(char));
-    }
+    fillCharCodes(charDeck, 97, 123);
   }
   if(numbers){
+    fillCharCodes(charDeck, 48, 57);
+  }
+  if(special){  
+    fillCharCodes(charDeck, 33, 47);
+    charDeck.filter(char => char === '"' || char === '/'); //I'm paranoid about special characters in passwords
+  }
 
+  //Now we've got a deck defined, we just need to draw passLength number of cards from it
+
+
+}
+
+function fillCharCodes(charArray, lowerBound, upperBound){
+  for(let char = lowerBound; char < upperBound + 1; char++){ //Iterate from 65-90 (uppercase char codes)
+    charArray.push(String.fromCharCode(char));
   }
 }
 
