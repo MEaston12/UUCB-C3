@@ -30,16 +30,20 @@ function generatePassword(){
   }
   if(special){  
     fillCharCodes(charDeck, 33, 47);
-    charDeck.filter(char => char === '"' || char === '/'); //I'm paranoid about special characters in passwords
+    charDeck.filter(char => char === '"' || char === '/'); //I'm paranoid about special characters in passwords breaking websites
   }
 
   //Now we've got a deck defined, we just need to draw passLength number of cards from it
-
-
+  var outString = '';
+  for(var i = 0; i < passLength; i++){
+    var cardNum = Math.floor(Math.random() * charDeck.length);
+    outString += charDeck[cardNum];
+  }
+  return outString;
 }
 
-function fillCharCodes(charArray, lowerBound, upperBound){
-  for(let char = lowerBound; char < upperBound + 1; char++){ //Iterate from 65-90 (uppercase char codes)
+function fillCharCodes(charArray, lowerBound, upperBound){ //I pushed this functionality to a function so it would be cleaner
+  for(var char = lowerBound; char < upperBound + 1; char++){ //Iterate from lowerbound to upperbound
     charArray.push(String.fromCharCode(char));
   }
 }
