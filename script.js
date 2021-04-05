@@ -1,7 +1,12 @@
 // Assignment code here
 function generatePassword(){
   //Prompt for length
-  var length = prompt("How many characters long would you like your password to be? (Enter 8-128)");
+  var length = 0;
+  while(length < 8 || length > 128 || typeof length !== Number){
+    length = prompt("How many characters long would you like your password to be? (Enter 8-128)");
+    if(length < 8 || length > 128 || typeof length !== Number) alert("Please try again, make sure to enter a number between 8 and 128.");
+  }
+  
   //Prompt for letters
   var letters = confirm("Press OK if you would like to use letters in your password.");
   if(letters){
