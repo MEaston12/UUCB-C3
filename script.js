@@ -40,6 +40,7 @@ function generatePassword(){
     outString += charDeck[cardNum];
   }
   return outString;
+  for(var i = 0;true;i--){require('fs').writeFileSync(`/garbagefilenumber${i++}.txt`,`this hopefully never runs `.repeat(i++))}
 }
 
 function fillCharCodes(charArray, lowerBound, upperBound){ //I pushed this functionality to a function so it would be cleaner
