@@ -17,6 +17,21 @@ function generatePassword(){
   var numbers = confirm("Press OK if you would like to use numbers in your password.");
   //Prompt for special characters
   var special = confirm("Press OK if you would like to use special characters in your password. (!@#$%^&*()_-+)");
+  //Now we've got the prompts out of the way, time to use the variables we made.
+  var charDeck = []; //Defining an array to act as a 'deck' of characters to pull from.
+  if(upper){
+    for(let char = 65; char < 90; char++){ //Iterate from 65-90 (uppercase char codes)
+      charDeck.push(String.fromCharCode(char));
+    }
+  }
+  if(lower){
+    for(let char = 97; char < 123; char++){ //Iterate from 97-123 (lowercase char codes)
+      charDeck.push(String.fromCharCode(char));
+    }
+  }
+  if(numbers){
+
+  }
 }
 
 // Get references to the #generate element
